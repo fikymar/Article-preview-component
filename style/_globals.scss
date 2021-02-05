@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ 
+}
+
+body {
+   font-family: 'Manrope', sans-serif;
+   font-size: $font-small;
+   line-height: 1.5;
+   color: $veryDarkGrayishBlue;
+   background-color:$lightGrayishBlue;
+   overflow: hidden;
+
+   @include breakpoint-down(medium) {
+    overflow: scroll;
+}
+}
+

@@ -1,0 +1,291 @@
+.grid {
+    // mobile first 375px * 768px
+    display: grid;
+    row-gap: 3.3vh;
+    grid-template-areas: 
+    "img"
+    "text"
+    "footer";
+
+    @include breakpoint-up(medium) {
+    grid-template-areas: 
+    "img text"
+    "img text"
+    "img footer";
+    column-gap: 2.625rem;//42px
+    row-gap:0;  
+    }
+
+    @include breakpoint-down(small) {
+        row-gap: 1vh;
+    }
+    
+}
+
+.main {
+ 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 87.4vw; //328px
+    height: 77vh; // 513px
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: $shadow;
+
+    @include breakpoint-up(medium) {
+       width: 51vw;
+       height: 35.1vh;
+     
+    }
+
+    @include breakpoint-down(small) {
+        height: 90vh;
+    }
+
+    &__image {
+        grid-area: img;
+        width: 87.4vw;
+        display: block;
+        height:26vh;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+
+        @include breakpoint-up(medium) {
+            grid-area: img;
+            width: 20vw;
+            min-height:35.1vh;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-top-right-radius: 0;
+            }
+    }
+
+    &__text {
+        grid-area: text;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        text-align: left;
+       
+        
+
+       @include breakpoint-up(medium) {
+            grid-area: text;
+            padding-left: 0;
+            padding-right: 32px;
+            padding-top: 1vh;
+            height: 24vh;
+            
+            }
+
+        @include breakpoint-up(large) {
+            padding-top: 2vh;
+            padding-bottom: 2vh;
+        }
+
+
+
+        > h4 {
+            font-size: 1.125rem;//18px
+
+            @include breakpoint-up(large) {
+               font-weight: 700;
+               font-size: 1.25rem;// 20px
+                }
+
+            
+              
+        }
+
+        > p {
+            padding-top: 1.375rem;//22px
+            font-size: 13px;
+
+            @include breakpoint-up(medium) {
+                padding-top: 0.5vh;
+               
+                }
+
+            @include breakpoint-up(large) {
+                padding-top: 2vh;
+                //font-size: 0.8125rem;
+                }
+           
+
+        }
+    }
+
+    &__footer {
+        grid-area: footer;
+        align-self: start;
+        display: grid;
+        grid-template-columns: 10vw 39.8vw 10vw;
+        column-gap: 5.6vw;
+        padding: 0 8.5vw;
+        
+       
+
+
+        @include breakpoint-up(medium) {
+            grid-area: footer;
+            padding-left: 0;
+            padding-top: 0vh;
+            padding-bottom: 2vh;
+            padding-right: 0;
+            grid-template-columns: 2.5vw 12vw 2.5vw;
+            column-gap: 3vw;
+            height: 6.1vh;
+        
+            }
+            @include breakpoint-up(large) {
+              
+                grid-template-columns: 2.5vw 15vw 2.5vw;
+                column-gap: 3vw;
+               
+            
+                }
+
+
+      
+
+        #avatar {
+            grid-area: 1 / 1 / 2 / 2;
+            width: 41px;
+            height: 41px;
+            border-radius: 50%;
+
+        }
+
+        > h5 {
+            grid-area: 1 / 2 / 2 / 3;
+           font-size: 0.875rem;
+           font-weight: 700;
+           letter-spacing: 0;
+           align-self:start;
+           
+
+        }
+
+        > h6 {
+            grid-area: 1 / 2 / 2 / 3;
+            font-size: $font-small;
+            font-weight: 500;
+            align-self:end;
+            color: $grayishBlue;
+            
+            @include breakpoint-up(medium) {
+                align-self: end;
+            
+                }
+        }
+
+        #shareIcon {
+            grid-area: 1 / 3 / 2 / 4;
+            cursor:pointer;
+        
+            circle {
+                fill:$lightGrayishBlue;
+            }
+ 
+        }   
+
+        #shareIcon:hover, :active {
+            circle {
+                fill:$desaturatedDarkBlue;
+            }
+            path {
+                fill: white;
+            }
+        }
+    }
+}
+
+.overlay {
+    position: absolute;
+    //top: 77 - 9.7vh;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 26.4vw 8.8vw 8.8vw 8.8vw 8.8vw 8.8vw;
+    grid-template-rows: 9.7vh;
+    align-items: center;
+    height: 0;
+    width:100%;
+    padding: 0;
+    background-color:$desaturatedDarkBlue;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    //z-index: 5;
+    overflow: hidden;
+    cursor: pointer;
+    transition: height 500ms ease-in-out;
+    box-shadow: $shadow;
+
+    > h5 {
+        letter-spacing: 4px;
+        color: $grayishBlue;
+        justify-self: center;
+    }
+
+    #overlay_shareIcon {
+        grid-area: 1 / 7 / 1 / 7;
+        justify-self: start;
+
+        circle {
+            fill:$grayishBlue;
+        }
+
+        
+    }
+}
+
+.overlayShow {
+    height: 10.2vh;
+
+    // Overlay should cover whole footer area
+    @include breakpoint-up(small) {
+        height: 15vh;
+    }
+}
+
+@include breakpoint-up(medium) {
+
+.overlay_medium {
+    width: 17.2vw;
+    height: 0;
+    left: (51 - 17.2vw) + 2vw;
+    bottom: 9.2vh + 1vh;
+    grid-template-columns: 2*3.44vw 3.44vw 3.44vw 3.44vw;
+    grid-template-rows: 6.9vh;
+    border-radius: 10px;
+    overflow: visible;
+    opacity: 0;
+    transition: all 500ms ease-in-out;
+   
+
+    > #overlay_shareIcon {
+        opacity: 0;
+    }
+
+    &::after {
+        content: " ";
+        position: absolute;
+        top: 46%;
+        left: 28%;
+        background-color: $desaturatedDarkBlue;
+        width: 100px;
+        height: 100px;
+        clip-path: polygon(58% 43%, 43% 28%, 72% 28%);
+
+    }
+}
+
+}
+
+@include breakpoint-up(large) {
+    .overlay_medium {
+      left: (51 - 17.2vw) + 5vw;
+
+    }
+}
